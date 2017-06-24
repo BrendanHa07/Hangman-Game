@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HangMan || Pokemon Edition</title>
+	<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<script type="text/javascript">
+
+
+var wins = 0;
+var losses = 0;
+
+function getWord () {
+
+	var pokemonName = ["Bulbasaur", "Charmander", "Squirtle", "Pikachu", "Meowth", "Mewtwo", "Dragonite"];
+	document.getElementById("wordGuess").innerHTML = pokemonName[Math.floor(Math.random() * pokemonName.length)];
+
+	var possibleName = " P I K A C H U";
+	var blankSpaces = "";
+	var wordLength = possibleName.length;
+
+	for (i = 0; i < wordLength; i++) {
+		var x = possibleName.charAt(i);
+
+		if (x === "" || x ==="/'") {
+			blankSpaces += x;	
+		} else {
+			blankSpaces += "_";
+		}
+	}
+	document.getElementById("blankSpaces").innerHTML = blankSpaces;
+}
+
+
+
+var wins = 0;
+var losses = 0;
+
+
+
+
+</script>
+
+
+</body>
+</html>
