@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hangman: Pokemon Edition</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 center-block">
+			<img src="assets/images/pokemon3.png" class="center-block" height="200px">
+		</div>	
+	</div>
+		
+			
+			
+		
+
+
+	<div class="row">
+		<div class="col-lg-6">
+			<div class="panel panel-defaul">
+				<div class="panel-heading">
+					<h3>Who's that Pokemon?</h3>
+				</div>
+				<div class="panel-body">
+					<h3 id="wordBlanks">_________</h3>
+				</div>
+
+					<div class="panel-body">
+						<strong>Wrong Guesses: </strong> <span id="wrongGuesses"></span>
+					</div>
+
+					<div class="panel-body">
+						<strong>Guesses Left:</strong><span id="guessesLeft"></span>
+					</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-6">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title"><strong>Counter</strong></h3>
+				</div>
+				<div class="panel-body">
+					<h3 id="wordBlanks">How many Pokemon have you captured or lost?</h3>
+				</div>
+				<div class="panel-body">
+					<strong>Caught: </strong> <span id="winCounter">0</span>
+				</div>
+				<div class="panel-body">
+					<strong>Losses: </strong><span id="lossCounter">0</span>
+				</div>
+			</div>
+			</div>
+		</div>
+		
+	</div>
+</div>
+
+<script type="text/javascript">
+	// array of words
+var wordList = ['pikachu', 'bulbasuar', 'squirtle', 'charmander', 'dragonite', 'caterpie', 'meowth', 'psyduck', 'mewtwo']
+var chosenWord = "";
+var lettersInChosenWord = [];
+var numberBlanks = 0;
+var blanksAndSuccesses = [];
+var wrongGuesses = [];
+
+
+// Game Counters
+var winCounter = 0;
+var lossCounter = 0;
+var numberGuesses = 10;
+
+// To Start Game
+function startGame () {
+	numberGuesses = 10;
+	chosenWord = wordList[Math.floor(Math.random() * wordList.length)];
+	lettersInChosenWord = chosenWord.split("");
+	numberBlanks = lettersInChosenWord.length;
+
+	console.log(chosenWord);
+
+	blanksAndSuccesses = [];
+	wrongGuesses = [];
+
+	for ( var i = 0; i < numberBlanks; i++) {
+		blanksAndSuccesses.push("_");
+	}
+
+	console.log(blanksAndSuccesses);
+
+	document.getElementById("guessesLeft").innerHTML = numberGuesses;
+	document.getElementById("wordBlanks").innerHTML = blanksAndSuccesses.join("");
+	document.getElementById("wrongGuesses").innerHTML = wrongGuesses.join("");
+}
+
+// To check all of the comparisons for matches.
+function checkLetters(letter) {
+
+	var letterInWord = false; 
+
+	for (var i=0; i<numberBlanks; i++) {
+		if(chosenWord[i] == letter) {
+			letterInWord = true; 
+ 		}
+	}
+
+	if(letterInWord){
+		for (var i=0; i<numberBlanks; i++){
+			if(chosenWord[i] == letter) {
+				blanksAndSuccesses[i] = letter; 
+			}
+		}
+		console.log(blanksAndSuccesses); 
+	}
+	
+	else {
+		wrongGuesses.push(letter);
+		numberGuesses--; 
+	}
+}
+
+// Complete a round of the game
+function roundComplete() {
+	console.log("winCount: " + winCounter +" | lossCount: " + lossCounter + " | numberGuesses: " + numberGuesses);
+	document.getElementById("guessesLeft").innerHTML = numberGuesses;
+	document.getElementById("wordBlanks").innerHTML = blanksAndSuccesses.join(" ");
+	document.getElementById("wrongGuesses").innerHTML = wrongGuesses.join(" ");
+
+	if (lettersInChosenWord.toString() == blanksAndSuccesses.toString()) {
+		winCounter++;
+		alert("You Win!");
+
+		document.getElementById("winCounter").innerHTML = winCounter
+		startGame();
+	}
+	else if(numberGuesses == 0) {
+		lossCounter++;
+		alert("You Lose!");
+
+	document.getElementById("lossCounter").innerHTML = lossCounter;
+	startGame();
+	}
+}
+
+// Main process of the game
+startGame();
+
+document.onkeyup = function (event) {
+	 letterGuessed = String.fromCharCode(event.keycode).toLowerCase();
+	checkLetters(letterGuessed);
+	roundComplete();
+}
+</script>
+
+
+</body>
+</html>
