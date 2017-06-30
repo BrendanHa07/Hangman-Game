@@ -21,7 +21,7 @@
 
 	<div class="row">
 		<div class="col-lg-6">
-			<div class="panel panel-defaul">
+			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3>Who's that Pokemon?</h3>
 				</div>
@@ -63,7 +63,7 @@
 
 <script type="text/javascript">
 	// array of words
-var wordList = ['pikachu', 'bulbasuar', 'squirtle', 'charmander', 'dragonite', 'caterpie', 'meowth', 'psyduck', 'mewtwo']
+var wordList = ['pikachu', 'bulbasaur', 'squirtle', 'charmander', 'dragonite', 'caterpie', 'meowth', 'psyduck', 'mewtwo', 'articuno', 'zapdos', 'moltres', 'snorlax', 'chansey', 'pidgeotto'];
 var chosenWord = "";
 var lettersInChosenWord = [];
 var numberBlanks = 0;
@@ -95,8 +95,8 @@ function startGame () {
 	console.log(blanksAndSuccesses);
 
 	document.getElementById("guessesLeft").innerHTML = numberGuesses;
-	document.getElementById("wordBlanks").innerHTML = blanksAndSuccesses.join("");
-	document.getElementById("wrongGuesses").innerHTML = wrongGuesses.join("");
+	document.getElementById("wordBlanks").innerHTML = blanksAndSuccesses.join(" ");
+	document.getElementById("wrongGuesses").innerHTML = wrongGuesses.join(" ");
 }
 
 // To check all of the comparisons for matches.
@@ -115,8 +115,10 @@ function checkLetters(letter) {
 			if(chosenWord[i] == letter) {
 				blanksAndSuccesses[i] = letter; 
 			}
+			console.log(blanksAndSuccesses);
+			document.getElementById("wordBlanks").innerHTML = blanksAndSuccesses;
 		}
-		console.log(blanksAndSuccesses); 
+
 	}
 	
 	else {
@@ -134,7 +136,7 @@ function roundComplete() {
 
 	if (lettersInChosenWord.toString() == blanksAndSuccesses.toString()) {
 		winCounter++;
-		alert("You Win!");
+		
 
 		document.getElementById("winCounter").innerHTML = winCounter
 		startGame();
@@ -152,10 +154,14 @@ function roundComplete() {
 startGame();
 
 document.onkeyup = function (event) {
-	 letterGuessed = String.fromCharCode(event.keycode).toLowerCase();
+	  letterGuessed = event.key.toLowerCase();
 	checkLetters(letterGuessed);
 	roundComplete();
+	console.log(letterGuessed);
 }
+
+
+
 </script>
 
 
