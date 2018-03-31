@@ -21,15 +21,17 @@
 					<h3>Who's that Pokemon?</h3>
 				</div>
 				<div class="panel-body">
-					<h3 id="wordBlanks">_________</h3>
-				</div>
-
+					<h3 id="current-word">________</h3>
+        </div>
+        <div>
+          <h3>Hint: </h3> <span id="hint"></span>
+        </div>
 					<div class="panel-body">
-						<strong>Wrong Guesses: </strong> <span id="wrongGuesses"></span>
+						<strong>Wrong Guesses: </strong> <span id="guessed-letters"></span>
 					</div>
 
 					<div class="panel-body">
-						<strong>Guesses Left:</strong><span id="guessesLeft"></span>
+						<strong>Guesses Left: </strong><span id="guesses-remaining"></span>
 					</div>
 			</div>
 		</div>
@@ -41,14 +43,12 @@
 					<h3 class="panel-title">Counter</h3>
 				</div>
 				<div class="panel-body">
-					<h3 id="wordBlanks">How many Pokemon have you captured or lost?</h3>
+					<h3 id="wordBlanks">How many Pokemon have you captured</h3>
 				</div>
 				<div class="panel-body">
-					<strong>Caught: </strong> <span id="winCounter">0</span>
-				</div>
-				<div class="panel-body">
-					<strong>Losses: </strong><span id="lossCounter">0</span>
-				</div>
+          <strong>Caught: </strong> <span id="wins">0</span>
+        </div>
+        <div id="imageDiv"></div>
 			</div>
 			</div>
 		</div>
