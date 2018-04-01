@@ -32,6 +32,10 @@ body {
 	padding-bottom: 10px;
 }
 
+#game-message {
+	text-align: center;
+}
+
 .footer{
     margin-top: 35px;
 	padding-left: 30px;

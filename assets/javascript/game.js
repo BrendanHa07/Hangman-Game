@@ -94,6 +94,12 @@ var hangmanGame = {
       // Update guesses remaining and remaining letter
       document.querySelector('#guesses-remaining').innerHTML = this.guessesLeft;
       document.querySelector('#guessed-letters').innerHTML = this.guessedLetters.join(", ")
+      if (this.guessesLeft === 0) {
+        document.querySelector('#game-message').innerHTML = "No More Guesses! The Pokemon is " + this.wordInPlay + "! ";
+        document.querySelector('#imageDiv').innerHTML = "<img class='pokemon-image' src='assets/images/" + this.availableWords[this.wordInPlay].picture + " '>"
+      } else {
+        return true;
+      }
     }
   },
 
@@ -164,7 +170,8 @@ var hangmanGame = {
 
       // update wins on page
       document.querySelector('#wins').innerHTML = this.wins;
-      // update with image
+      // update with image and success message
+      document.querySelector('#game-message').innerHTML = "You have just caught " + this.wordInPlay + "! ";      
       document.querySelector('#imageDiv').innerHTML = "<img class='pokemon-image' src='assets/images/" + this.availableWords[this.wordInPlay].picture + " '>";
       return true;
     }
