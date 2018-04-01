@@ -7,19 +7,47 @@ var hangmanGame = {
 		},
 		charizard: {
 			picture: 'Charizard.png',
-			hint: 'A fire and flying Pokemon with a red flame at the tip of its tail.'
+			hint: 'It uses its wings to fly high. The temperature of its fire increases as it gains experience in battle.'
 		},
 		mewtwo: {
 			picture: 'Mewtwo.png',
 			hint: 'It was created by a scientist after years of horrific gene splicing and DNA engineering experiments.'
-		}
+    },
+    blastoise: {
+      picture: 'Blastoise.png',
+      hint: "The pressurized water jets on this brutal Pokemon's shell are used for high-speed tackles."
+    },
+    jiggylpuff: {
+      picture: 'Jigglypuff.png',
+      hint: "Looking into its cute, round eyes makes it start singing a song so pleasant listeners can't help but fall asleep."
+    },
+    hitmonchan: {
+      picture: 'Hitmonchan.png',
+      hint: 'While apparently doing nothing, it fires punches in lightning fast volleys that are impossible to see.'
+    },
+    pidgeotto: {
+      picture: 'Pidgeotto.png',
+      hint: 'It flies over its wide territory in search of prey, downing it with its highly developed claws.'
+    },
+    gengar: {
+      picture: 'Gengar.png',
+      hint:'Under a full moon, this Pokemon likes to mimic the shadows of people and laugh at their fright.'
+    },
+    gyarados: {
+      picture: 'Gyarados.png',
+      hint: 'Brutally vicious and enormously destructive. Known for totally destroying cities in ancient times.'
+    },
+    bulbasaur: {
+      picture: 'Bulbasaur.png',
+      hint: 'A strange seed was planted on its back at birth. The plant sprouts and grows with this Pokemon.'
+    }
 	},
 
 	// variables to set up the inital game
 	wordInPlay: null,
 	lettersOfTheWord: [],
 	matchedLetters: [],
-	guessedLetters: [],
+  guessedLetters: [],
 	guessesLeft: 0,
 	lettersGuessed: null,
 	wins: 0,
