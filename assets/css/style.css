@@ -3,11 +3,16 @@ body {
 	background-size: cover;
 	font-family: 'Questrial', sans-serif;
 	color: black;	
+	height: 100%;
 }
 
 .logo-image {
 	max-width: 100%;
 	height: auto;
+}
+
+.center-block {
+	margin-top: 15px;
 }
 
 .panel {
